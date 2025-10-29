@@ -1,0 +1,68 @@
+﻿@model Filmiy.ViewModels.RegisterVM
+
+@{
+    ViewData["Title"] = "User Registration";
+}
+
+<div class="container mt-5" style="max-width:600px;">
+    <div class="card shadow-sm p-4">
+        <h2 class="text-center mb-4 text-primary">Create a New Account</h2>
+
+        <form asp-action="Register" method="post">
+            <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+            <div class="mb-3">
+                <label asp-for="FirstName" class="form-label">First Name</label>
+                <input asp-for="FirstName" class="form-control" placeholder="Enter your first name" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="LastName" class="form-label">Last Name</label>
+                <input asp-for="LastName" class="form-control" placeholder="Enter your last name" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="UserName" class="form-label">UserName </label>
+                <input asp-for="UserName" class="form-control" placeholder="Enter your UserName" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label">Email</label>
+                <input asp-for="Email" class="form-control" placeholder="Enter your email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+           
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label">Password</label>
+                <input asp-for="Password" type="password" class="form-control" placeholder="Enter your password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ConfirmPassword" class="form-label">Confirm Password</label>
+                <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm your password" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-4">
+                <a asp-action="login" class="text-decoration-none">Already have an account?</a>
+                <button type="submit" class="btn btn-primary px-4">Register</button>
+            </div>
+        </form>
+    </div>
+    
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        
+        document.getElementById("Email").addEventListener("input", function () {
+        document.getElementById("UserName").value = this.value;
+        }); </script>
+}
+
