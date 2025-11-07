@@ -1,0 +1,86 @@
+﻿@model Filmiy.ViewModels.LoginVM
+
+<div class="container">
+    <div class="col-sm-10 col-md-12 px-sm-0 align-self-center mx-auto py-5">
+        <div class="row justify-content-center g-0">
+            <div class="col-lg-9 col-xl-8 col-xxl-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-center p-3">
+                        <h3 class="text-white mb-0">Filmiy</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="row flex-between-center">
+                            <div class="col-auto">
+                                <h4 class="mb-0">Login</h4>
+                            </div>
+                            <div class="col-auto fs--1 text-600 ms-auto">
+                                <span class="mb-0 fw-semi-bold">New User?</span>
+                                <a asp-action="Register" asp-controller="Account" class="text-decoration-none">Create account</a>
+                            </div>
+                        </div>
+
+
+                        <form asp-action="Login" method="post" class="mt-3">
+                            <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+                            <div class="mb-3">
+                                <label asp-for="UserNameOREmail" class="form-label">Username or Email</label>
+                                <input asp-for="UserNameOREmail" class="form-control" placeholder="Enter your username or email" />
+                                <span asp-validation-for="UserNameOREmail" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Password" class="form-label">Password</label>
+                                <input asp-for="Password" type="password" class="form-control" placeholder="Enter your password" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+
+                            <div class="row flex-between-center">
+                                <div class="col-auto">
+                                    <div class="form-check mb-0">
+                                        <input asp-for="RememberMe" class="form-check-input" />
+                                        <label asp-for="RememberMe" class="form-check-label mb-0"></label>
+                                    </div>
+                                </div>
+                                <div class="col-auto ms-auto">
+                                    <a asp-action="ForgetPassword" class="fs--1">Forgot Password?</a>
+                                </div>
+                                <div class="col-auto ms-auto">
+                                    <a asp-action="ResendConfirmEmail" class="fs--1">Resend ConfirmEmail</a>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <button class="btn btn-primary d-block w-100" type="submit">Log in</button>
+                            </div>
+                        </form>
+
+                        <div class="position-relative mt-4">
+                            <hr />
+                            <div class="divider-content-center">or log in with</div>
+                        </div>
+
+                        <div class="row g-2 mt-2">
+                            <div class="col-sm-6">
+                                <a class="btn btn-outline-danger btn-sm d-block w-100" href="#">
+                                    <span class="fab fa-google-plus-g me-2"></span> Google
+                                </a>
+                            </div>
+                            <div class="col-sm-6">
+                                <a class="btn btn-outline-primary btn-sm d-block w-100" href="#">
+                                    <span class="fab fa-facebook-square me-2"></span> Facebook
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

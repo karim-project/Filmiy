@@ -1,0 +1,41 @@
+﻿@model Cinema
+
+@{
+    ViewData["Title"] = "Create Cinema";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-3">Create New Cinema</h2>
+
+    <form method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">Cinema Name</label>
+            <input asp-for="Name" class="form-control" placeholder="Enter cinema name" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label">Description</label>
+            <textarea asp-for="Description" class="form-control" placeholder="Enter cinema description"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Location" class="form-label">Location</label>
+            <input asp-for="Location" class="form-control" placeholder="Enter cinema location" />
+            <span asp-validation-for="Location" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="image" class="form-label">Cinema Image</label>
+            <input type="file" name="image" id="image" class="form-control" accept="image/*" />
+        </div>
+
+        <button type="submit" class="btn btn-success">Create</button>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Filmiy.Models.Movie>
+
+@{
+    ViewData["Title"] = "Movies";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Movies List</h2>
+        <a href="/Admin/Movie/Create" class="btn btn-primary">+ Create New Movie</a>
+    </div>
+
+    <table class="table table-bordered table-hover align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Main Image</th>
+                <th scope="col">Title</th>
+                <th scope="col">Category</th>
+                <th scope="col">Cinema</th>
+                <th scope="col" style="width: 150px;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+               
+                foreach (var movie in Model)
+                {
+                    <tr>
+                        <td>@movie.Id</td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(movie.MainImg))
+                            {
+                                <img src="~/Images/movies/main/@movie.MainImg" width="80" height="100" class="rounded shadow-sm" />
+                            }
+                            else
+                            {
+                                <span class="text-muted">No Image</span>
+                            }
+                        </td>
+                        <td>@movie.Name</td>
+                        <td>@movie.category?.Name</td>
+                        <td>@movie.cinema?.Name</td>
+                        <td>
+                            <a href="/Admin/Movie/Edit/@movie.Id" class="btn btn-sm btn-warning me-2">
+                                <i class="bi bi-pencil-square"></i> Edit
+                            </a>
+                            <a href="/Admin/Movie/Delete/@movie.Id" class="btn btn-sm btn-danger"
+                               onclick="return confirm('Are you sure you want to delete this movie?');">
+                                <i class="bi bi-trash"></i> Delete
+                            </a>
+                        </td>
+                    </tr>
+                    
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6" class="text-center text-muted py-4">No movies found.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+

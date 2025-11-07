@@ -1,0 +1,32 @@
+﻿@model Filmiy.ViewModels.ResendConfirmEmailVM
+@{
+    ViewData["Title"] = "Resend ConfirmEmail";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4">@ViewData["Title"]</h2>
+    <hr />
+
+    <form asp-action="ResendConfirmEmail" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group mb-3">
+            <label asp-for="UserNameOREmail" class="form-label"></label>
+            <input asp-for="UserNameOREmail" class="form-control" placeholder="Enter Email" />
+            <span asp-validation-for="UserNameOREmail" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Resend</button>
+    </form>
+
+    <div class="mt-3">
+        <a asp-action="Login" class="btn btn-link">Login</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

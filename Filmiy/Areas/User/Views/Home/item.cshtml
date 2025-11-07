@@ -1,0 +1,119 @@
+﻿@model Filmiy.Models.Movie
+
+
+
+<style>
+    .movie-page {
+        margin-top: 40px;
+    }
+
+    .movie-img {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .movie-title {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .movie-info {
+        font-size: 1.1rem;
+        color: #444;
+        margin-bottom: 10px;
+    }
+
+    .movie-price {
+        font-size: 1.8rem;
+        color: #27ae60;
+        margin-top: 15px;
+        font-weight: 700;
+    }
+
+    .actors-section img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 10px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .actor-card {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+    }
+
+    .sub-img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+</style>
+
+<div class="container movie-page">
+
+    <div class="row">
+
+        <!-- Movie Image -->
+        <div class="col-md-4">
+            <img src="~/Images/movies/main/@Model.MainImg" class="movie-img" />
+        </div>
+
+        <!-- Movie Details -->
+        <div class="col-md-8">
+
+            <h2 class="movie-title">@Model.Name</h2>
+
+            <p class="movie-info"><strong>Category:</strong> @Model.category?.Name</p>
+            <p class="movie-info"><strong>Cinema:</strong> @Model.cinema?.Name</p>
+            <p class="movie-info"><strong>Description:</strong> @Model.Description</p>
+            <p class="movie-info"><strong>Status:</strong> @Model.Status</p>
+
+            <p class="movie-price">@Model.Price EGP</p>
+
+            <a href="/User/Cart/Add?movieId=@Model.Id" class="btn btn-warning mt-3">
+                Book Ticket
+            </a>
+        </div>
+
+    </div>
+
+    <hr />
+
+    <!-- ACTORS -->
+    <h4>Actors</h4>
+    <div class="row">
+        @foreach (var ma in Model.movieActors)
+        {
+            <div class="col-3 text-center mb-3">
+                <img src="~/Images/actors/@ma.Actor.Image"
+                     class="img-fluid rounded"
+                     style="width:90px; height:90px; object-fit:cover;" />
+
+                <p class="mt-2" style="color:#fff;">@ma.Actor.Name</p>
+            </div>
+        }
+    </div>
+
+    <hr />
+
+    <!-- More Images -->
+    <h3>More Images</h3>
+    <div class="row mt-3">
+        @foreach (var img in Model.SubImages)
+        {
+            <div class="col-md-3 col-6 mb-3">
+                <img src="~/Images/movies/sub/@img.Img" class="sub-img" />
+            </div>
+        }
+    </div>
+
+</div>
+

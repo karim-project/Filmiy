@@ -1,0 +1,42 @@
+﻿@model ValidateOTPVM
+@{
+    ViewData["Title"] = "Verify OTP Code";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-4">
+                    <h4 class="text-center mb-4 fw-bold text-primary">Verify Your Code</h4>
+
+                    <form asp-action="ValidateOTP" asp-controller="Account" method="post">
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group mb-3">
+                            <label asp-for="OTP" class="form-label fw-semibold">Enter Verification Code</label>
+                            <input asp-for="OTP" class="form-control text-center fs-5" placeholder="Enter the code here" />
+                            <span asp-validation-for="OTP" class="text-danger"></span>
+                        </div>
+
+                        <input type="hidden" asp-for="ApplicationUserId" />
+
+                        <button type="submit" class="btn btn-primary w-100 fw-semibold mt-3">
+                            Confirm Code
+                        </button>
+                    </form>
+
+                    <div class="text-center mt-3">
+                        <a asp-action="ResendOTP" asp-controller="Account" asp-route-userId="@Model.ApplicationUserId" class="text-decoration-none">
+                            Resend verification code?
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
