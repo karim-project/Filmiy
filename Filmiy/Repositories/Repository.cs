@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace Filmiy.Repositories
 {
-    public class Repository<T>:IRepository<T> where T : class
+    public class Repository<T> :IRepository<T> where T : class
     {
         private ApplicationDbContext _context;// = new();
         private DbSet<T> _db;

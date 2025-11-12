@@ -39,13 +39,7 @@ namespace Filmiy.Areas.User.Controllers
 
         public async Task<IActionResult> Item(int id, CancellationToken cancellationToken)
         {
-            var movie = await _context.Movies
-    .Include(m => m.category)
-    .Include(m => m.cinema)
-    .Include(m => m.SubImages)
-    .Include(m => m.movieActors)
-        .ThenInclude(ma => ma.Actor)
-    .FirstOrDefaultAsync(m => m.Id == id);
+            var movie = await _context.Movies.Include(m => m.category).Include(m => m.cinema).Include(m => m.SubImages).Include(m => m.movieActors).ThenInclude(ma => ma.Actor).FirstOrDefaultAsync(m => m.Id == id);
 
 
             if (movie is null)
@@ -54,5 +48,13 @@ namespace Filmiy.Areas.User.Controllers
             return View(movie);
 
         }
+
+       
+       
+
+
+
+
+
     }
 }

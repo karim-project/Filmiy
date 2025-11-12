@@ -19,6 +19,8 @@ namespace Filmiy.Data
         public DbSet<MovieActor> MovieActors { get; set; } = null!;
         public DbSet<MovieImage> MovieImages { get; set; } = null!;
         public DbSet<Cart> Carts { get; set; } = null!;
+        
+       
         public DbSet<ApplicationUserOTP> ApplicationUserOTP { get; set; } = null!;
 
 
@@ -27,9 +29,15 @@ namespace Filmiy.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
+
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfiguration(new MovieActorConfiguration());
+        }
+
+        internal void DeleteRange(IEnumerable<MovieActor> movieActors)
+        {
+            throw new NotImplementedException();
         }
 
 

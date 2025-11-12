@@ -43,7 +43,7 @@ namespace Filmiy.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Actors");
+                    b.ToTable("Actors", (string)null);
                 });
 
             modelBuilder.Entity("Filmiy.Models.ApplicationUser", b =>
@@ -148,7 +148,7 @@ namespace Filmiy.Migrations
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.ToTable("ApplicationUserOTP");
+                    b.ToTable("ApplicationUserOTP", (string)null);
                 });
 
             modelBuilder.Entity("Filmiy.Models.Cart", b =>
@@ -178,7 +178,7 @@ namespace Filmiy.Migrations
 
                     b.HasIndex("MovieId");
 
-                    b.ToTable("Carts");
+                    b.ToTable("Carts", (string)null);
                 });
 
             modelBuilder.Entity("Filmiy.Models.Category", b =>
@@ -200,7 +200,7 @@ namespace Filmiy.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("Filmiy.Models.Cinema", b =>
@@ -232,7 +232,7 @@ namespace Filmiy.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cinema");
+                    b.ToTable("Cinema", (string)null);
                 });
 
             modelBuilder.Entity("Filmiy.Models.Movie", b =>
@@ -275,7 +275,7 @@ namespace Filmiy.Migrations
 
                     b.HasIndex("CinemaId");
 
-                    b.ToTable("Movies");
+                    b.ToTable("Movies", (string)null);
                 });
 
             modelBuilder.Entity("Filmiy.Models.MovieActor", b =>
@@ -290,7 +290,7 @@ namespace Filmiy.Migrations
 
                     b.HasIndex("ActorId");
 
-                    b.ToTable("MovieActors");
+                    b.ToTable("MovieActors", (string)null);
                 });
 
             modelBuilder.Entity("Filmiy.Models.MovieImage", b =>
@@ -316,7 +316,7 @@ namespace Filmiy.Migrations
 
                     b.HasIndex("MovieId");
 
-                    b.ToTable("MovieImages");
+                    b.ToTable("MovieImages", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

@@ -42,6 +42,7 @@ namespace Filmiy
             services.AddScoped<IRepository<MovieImage>, Repository<MovieImage>>();
             services.AddScoped<IRepository<MovieActor>, Repository<MovieActor>>();
             services.AddScoped<IRepository<ApplicationUserOTP>, Repository<ApplicationUserOTP>>();
+            services.AddScoped<IRepository<Cart>, Repository<Cart>>();
 
             services.AddScoped<IDBInitilizer, DBInitilizer>();
         }

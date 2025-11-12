@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Cart>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Your Cart</h2>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            Your cart is empty.
+        </div>
+    }
+    else
+    {
+        <!-- Pay button above the table -->
+        <div class="mb-3 d-flex justify-content-end">
+            <a asp-area="User"
+               asp-controller="Cart"
+               asp-action="Pay"
+               class="btn btn-outline-dark px-4">
+                Proceed to Pay
+            </a>
+        </div>
+
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Image</th>
+                    <th>Movie</th>
+                    <th>Price</th>
+                    <th>Count</th>
+                    <th>Total</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <img src="@Url.Content("~/Images/movies/main/" + item.Movie.MainImg)" width="70" />
+                        </td>
+
+                        <td>@item.Movie.Name</td>
+
+                        <td>@item.Price $</td>
+
+                        <td>@item.Count</td>
+
+                        <td>@(item.Price* item.Count)$</td>
+
+                        <td>
+                            <a asp-area="User"
+                               asp-controller="Cart"
+                               asp-action="DeleteMovie"
+                               asp-route-movieId="@item.MovieId"
+                               class="btn btn-outline-danger btn-sm">
+                                Remove
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+

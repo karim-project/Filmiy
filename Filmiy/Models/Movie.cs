@@ -37,5 +37,7 @@ namespace Filmiy.Models
         public int CinemaId { get; set; }
         [ValidateNever]
         public Cinema cinema { get; set; }
+
+      
     }
 }

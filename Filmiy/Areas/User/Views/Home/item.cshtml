@@ -78,9 +78,26 @@
 
             <p class="movie-price">@Model.Price EGP</p>
 
-            <a href="/User/Cart/Add?movieId=@Model.Id" class="btn btn-warning mt-3">
-                Book Ticket
-            </a>
+            <form asp-action="AddToCart" asp-controller="Cart" asp-area="User" method="get">
+
+                <input type="hidden" name="movieId" value="@Model.Id" />
+
+                <label class="form-label">Number of Tickt</label>
+                <input type="number" name="count" class="form-control"
+                       value="1" min="1" style="max-width: 120px" />
+
+                <p class="mt-2">
+                    <strong>Price per ticket:</strong> @Model.Price LE
+                </p>
+
+                <button href="/User/Cart" type="submit" class="btn btn-warning mt-3">Add To Cart</button>
+
+
+            </form>
+
+
+
+
         </div>
 
     </div>
@@ -89,22 +106,28 @@
 
     <!-- ACTORS -->
     <h4>Actors</h4>
-    <div class="row">
-        @foreach (var ma in Model.movieActors)
-        {
-            <div class="col-3 text-center mb-3">
-                <img src="~/Images/actors/@ma.Actor.Image"
-                     class="img-fluid rounded"
-                     style="width:90px; height:90px; object-fit:cover;" />
 
-                <p class="mt-2" style="color:#fff;">@ma.Actor.Name</p>
+    <div class="row gx-1 gy-1">
+        @foreach (var item in Model.movieActors)
+        {
+            <div class="col-3 text-center p-0">
+                <img src="~/Images/actors/@item.Actor.Image"
+                     style="width:90px; height:120px; object-fit:cover; display:block; margin:auto;" />
+
+                <div style="font-size:14px; margin-top:3px; color:black;">
+                    @item.Actor.Name
+                </div>
             </div>
         }
     </div>
 
-    <hr />
-
     
+ 
 
 </div>
 
+
+
+
+
+   
